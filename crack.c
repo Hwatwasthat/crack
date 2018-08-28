@@ -7,10 +7,12 @@
 #include <string.h>
 #include <cs50.h>
 
+// Define constants related to arguments, can re-use arg system by changing these.
 #define MIN_ARGS 2
 #define MAX_ARGS 3
 #define OPTIONAL_ARGS 1
 
+// Function prototypes.
 int verify_input(int);
 int process_input(int, char **, char *, int *);
 void output(bool, char *);
@@ -41,7 +43,9 @@ int main(int argc, char *argv[])
     {
         return 1;
     }
+
     char *salt = get_salt(hash);
+
     char password[max_length + 1];
     password[max_length] = '\0';
 
@@ -83,6 +87,7 @@ int process_input(int argc, char *argv[],char *hash, int *maxLenPtr)
     }
     else
     {
+        // Easy way to copy array over
         memcpy(hash, argv[1], 13);
     }
     return 0;
